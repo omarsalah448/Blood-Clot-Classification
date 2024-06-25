@@ -1,0 +1,42 @@
+﻿@model Mayo_Clinic.ViewModels.ProfileDoctorViewModel
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <h5 class="card-header bg-danger text-white">Profile</h5>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">First Name</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.FirstName)</dd>
+
+                <dt class="col-sm-3">Last Name</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.LastName)</dd>
+
+                <dt class="col-sm-3">Username</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.UserName)</dd>
+
+                <dt class="col-sm-3">University</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.University)</dd>
+
+                <dt class="col-sm-3">Description</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
+
+                <dt class="col-sm-3">Image</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Image)</dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            <div class="row justify-content-end">
+                <div class="col-auto">
+                    @Html.ActionLink("My Patients", "ViewAll", "Patient", null, new { @class = "btn btn-info" })
+                </div>
+                <div class="col-auto">
+                    @Html.ActionLink("Edit Profile", "EditProfile", null, new { @class = "btn btn-warning" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

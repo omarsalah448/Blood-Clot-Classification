@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Mayo_Clinic.ViewModels.DisplayPatientViewModel>
+
+@{
+    ViewData["Title"] = "View Patients";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <p>
+                <a class="btn btn-primary" asp-action="Add">Add A New Patient</a>
+            </p>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+                        <th>@Html.DisplayNameFor(model => model.Age)</th>
+                        <th>@Html.DisplayNameFor(model => model.Classification)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Age)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Classification)</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Actions">
+                                    <a class="btn btn-info custom-margin" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                    <a class="btn btn-secondary custom-margin" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                    <a class="btn btn-warning custom-margin" asp-action="Predict" asp-route-id="@item.Id">Predict</a>
+                                    <a class="btn btn-success custom-margin" asp-action="Explain" asp-route-id="@item.Id">Explain</a>
+                                    <form asp-action="Delete" asp-controller="Patient" method="post" onsubmit="return confirm('Are you sure you want to delete that patient?');">
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-danger custom-margin">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .custom-margin {
+        margin-right: 10px; /* Adjust the margin as needed */
+    }
+</style>

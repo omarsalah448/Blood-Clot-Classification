@@ -1,0 +1,119 @@
+﻿@model Mayo_Clinic.ViewModels.SignInViewModel
+
+@{
+    ViewData["Title"] = "SignIn";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        .sign-in-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sign-in-form {
+            position: relative;
+            max-width: 430px;
+            width: 100%;
+            background: #fff;
+            padding: 34px;
+            border-radius: 6px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        .sign-in-form h2 {
+            position: relative;
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+        }
+        .sign-in-form h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 28px;
+            border-radius: 12px;
+            background: #4070f4;
+        }
+        .sign-in-form form {
+            margin-top: 30px;
+        }
+        .sign-in-form .input-box {
+            margin-bottom: 20px; /* Increased spacing between input boxes */
+        }
+        .sign-in-form label {
+            margin-bottom: 5px; /* Increased spacing between labels and inputs */
+            display: block; /* Ensure labels are displayed as blocks for proper spacing */
+        }
+        .sign-in-form input[type="text"],
+        .sign-in-form input[type="password"] {
+            height: 50px; /* Increased height of the input fields */
+            width: 100%;
+            outline: none;
+            padding: 0 15px;
+            font-size: 17px;
+            font-weight: 400;
+            color: #333;
+            border: 1.5px solid #C7BEBE;
+            border-bottom-width: 2.5px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .sign-in-form input[type="text"]:focus,
+        .sign-in-form input[type="password"]:focus,
+        .sign-in-form input[type="text"]:valid,
+        .sign-in-form input[type="password"]:valid {
+            border-color: #4070f4;
+        }
+        .sign-in-form .button input[type="submit"] {
+            height: 50px; /* Increased height of the submit button */
+            color: #fff;
+            letter-spacing: 1px;
+            border: none;
+            background: #4070f4;
+            cursor: pointer;
+        }
+        .sign-in-form .button input[type="submit"]:hover {
+            background: #0e4bf1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sign-in-wrapper">
+    <div class="sign-in-form">
+        <h2>Sign In</h2>
+        <form asp-action="SignIn">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="input-box">
+                <label asp-for="UserName" class="control-label">Username</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="input-box">
+                <label asp-for="Password" class="control-label">Password</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                </label>
+            </div>
+            <div class="input-box button">
+                <input type="submit" value="Sign In" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

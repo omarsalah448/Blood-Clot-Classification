@@ -1,0 +1,42 @@
+﻿@model Mayo_Clinic.Models.ProfilePatientViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Patient Details</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">Name</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+
+                <dt class="col-sm-3">Phone Number</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.PhoneNumber)</dd>
+
+                <dt class="col-sm-3">Age</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Age)</dd>
+
+                <dt class="col-sm-3">Blood Clot Image</dt>
+                <dd class="col-sm-9">
+                    <img src="@Model.BloodClotImage" alt="Blood Clot Image" class="img-fluid" style="max-height: 300px;" />
+                </dd>
+
+                <dt class="col-sm-3">Classification</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Classification)</dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            <div class="row justify-content-end">
+                <div class="col-auto">
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+                </div>
+                <div class="col-auto">
+                    <a asp-action="ViewAll" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
