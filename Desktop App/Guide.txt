@@ -1,0 +1,1 @@
+First, run the database.py file, then run the signin.py to start using the application.
